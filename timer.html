@@ -20,7 +20,7 @@ function timer() {
     second = [];
     second.push(newSecond);
 
-    if (second[0] > 3) {
+    if (second[0] > 2) {
         second = [0];
 
         let oldMinute = minute[0];
@@ -29,7 +29,7 @@ function timer() {
         minute.push(newMinute);
     }
 
-    if (minute[0] > 3) {
+    if (minute[0] > 2) {
         minute = [0];
         
         let oldHours = hours[0];
@@ -38,7 +38,7 @@ function timer() {
         hours.push(newHours);
     }
 
-    if (hours[0] > 3) {
+    if (hours[0] > 2) {
         hours = [0];
     }
     document.getElementById("second").innerHTML = 'Second: ' + second;
