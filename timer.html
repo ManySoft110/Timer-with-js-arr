@@ -10,40 +10,29 @@
 
 <script>
  
-
-
-
-
-
 let second = [0];
 let minute = [0];
+let hours = [0];
 
-    function timer() {
+function timer() {
+    let oldSecond = second[0];
+    let newSecond = oldSecond + 1;
+    second = [];
+    second.push(newSecond);
 
-        let oldSecond = second[0];
-        let newSecond = oldSecond + 1;
-
-        second = [];
-        second.push(newSecond);
-
-        if (second[0] == 5) {
-            second = [0];
-            let oldMinute = minute[0];
-            let newMinute = oldMinute + 1;
-
-            minute = [];
-            minute.push(newMinute);
-
-        }
-
-
-
-
-        document.getElementById("second").innerHTML = 'Second: ' + second;
-        document.getElementById("minute").innerHTML = 'Minute: ' + minute;
-        document.getElementById("hours").innerHTML = 'Hours:' + hours;
+    if (second[0] == 5) {
+        second = [0];
+        let oldMinute = minute[0];
+        let newMinute = oldMinute + 1;
+        minute = [];
+        minute.push(newMinute);
     }
-setInterval(timer,1000)
+
+    document.getElementById("second").innerHTML = 'Second: ' + second;
+    document.getElementById("minute").innerHTML = 'Minute: ' + minute;
+    document.getElementById("hours").innerHTML = 'Hours:' + hours;
+}
+setInterval(timer,1000);
 </script>
 
 </body>
