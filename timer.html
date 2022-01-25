@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+ 
+
+<button type="button" id="btn" class="btn btn-primary">Get Full Name</button>
+
+<button type="button" id="btn1" class="btn btn-primary">Get ALL</button>
+<p id="second"></p>
+
+<p id="minute"></p>
+
+<p id="hours"></p>
+
+<script>
+ 
+
+
+
+
+
+let second = [0];
+let minute = [0];
+
+    function timer() {
+
+        let oldSecond = second[0];
+        let newSecond = oldSecond + 1;
+
+        second = [];
+        second.push(newSecond);
+
+        if (second[0] == 5) {
+            second = [0];
+            let oldMinute = minute[0];
+            let newMinute = oldMinute + 1;
+
+            minute = [];
+            minute.push(newMinute);
+
+        }
+
+
+
+
+        document.getElementById("second").innerHTML = 'Second: ' + second;
+        document.getElementById("minute").innerHTML = 'Minute: ' + minute;
+        document.getElementById("hours").innerHTML = 'Hours:' + hours;
+    }
+setInterval(timer,1000)
+</script>
+
+</body>
+</html>
