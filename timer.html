@@ -22,10 +22,20 @@ function timer() {
 
     if (second[0] == 5) {
         second = [0];
+
         let oldMinute = minute[0];
         let newMinute = oldMinute + 1;
         minute = [];
         minute.push(newMinute);
+    }
+
+    if (minute[0] == 5) {
+        minute = [0];
+        
+        let oldHours = hours[0];
+        let newHours = oldHours + 1;
+        hours = [];
+        hours.push(newHours);
     }
 
     document.getElementById("second").innerHTML = 'Second: ' + second;
