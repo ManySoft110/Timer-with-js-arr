@@ -38,6 +38,9 @@ function timer() {
         hours.push(newHours);
     }
 
+    if (hours[0] > 3) {
+        hours = [0];
+    }
     document.getElementById("second").innerHTML = 'Second: ' + second;
     document.getElementById("minute").innerHTML = 'Minute: ' + minute;
     document.getElementById("hours").innerHTML = 'Hours:' + hours;
