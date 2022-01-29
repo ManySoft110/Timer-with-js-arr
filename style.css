@@ -1,3 +1,10 @@
-#timerDiv {}
+.btnDiv {
+    text-align: center;
+}
 
-<link rel="stylesheet" href="assets/css/style.css">
+.table {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7rem;
+}
