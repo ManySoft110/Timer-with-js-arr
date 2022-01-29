@@ -12,9 +12,8 @@
 </head>
 
 <body>
-    <button type="button" onclick="btnAction();" id="btn">Start</button>
-    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
-        <table class="table">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem; ">
+        <table class="table ">
             <thead>
                 <tr>
                     <th>Hours</th>
@@ -24,22 +23,26 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="hours"></td>
-                    <td id="minute"></td>
-                    <td id="second" scope="row"></td>
+                    <td id="hours "></td>
+                    <td id="minute "></td>
+                    <td id="second " scope="row "></td>
                 </tr>
                 <tr>
-                    <td scope="row"></td>
+                    <td scope="row "></td>
                     <td></td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <div>
+        <button type="button" class="btn btn-success" onclick="btnAction();" id="btn">Start</button>
+        <button type="button" name="" id="" class="btn btn-primary">Reset</button>
+    </div>
     <hr>
     <p>Countdown</p>
-    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
-        <table class="table">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem; ">
+        <table class="table ">
             <thead>
                 <tr>
                     <th>Hours</th>
@@ -49,12 +52,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="chours"></td>
-                    <td id="cminute"></td>
-                    <td id="csecond" scope="row"></td>
+                    <td id="chours "></td>
+                    <td id="cminute "></td>
+                    <td id="csecond " scope="row "></td>
                 </tr>
                 <tr>
-                    <td scope="row"></td>
+                    <td scope="row "></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -72,13 +75,15 @@
                 t = setInterval(timer, 1000);
                 console.log(action);
 
-                btn.textContent = 'Stop';
+                btn.textContent = 'Pause';
+                btn.className = 'btn btn-danger'
             } else {
                 action = [];
                 action.push(0);
                 console.log(action);
                 clearInterval(t);
                 btn.textContent = 'Start';
+                btn.className = 'btn btn-success'
             }
         }
 
@@ -120,9 +125,9 @@
             if (hours[0] > 23) {
                 hours = [0];
             }
-            document.getElementById("second").innerHTML = second;
-            document.getElementById("minute").innerHTML = minute;
-            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("second ").innerHTML = second;
+            document.getElementById("minute ").innerHTML = minute;
+            document.getElementById("hours ").innerHTML = hours;
         }
 
 
@@ -173,9 +178,9 @@
             if (chours[0] < 1) {
                 chours = [0];
             }
-            document.getElementById("csecond").innerHTML = csecond;
-            document.getElementById("cminute").innerHTML = cminute;
-            document.getElementById("chours").innerHTML =  chours;
+            document.getElementById("csecond ").innerHTML = csecond;
+            document.getElementById("cminute ").innerHTML = cminute;
+            document.getElementById("chours ").innerHTML =  chours;
         }
         */
 
@@ -190,9 +195,9 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js "></script>
 </body>
 
 </html>
