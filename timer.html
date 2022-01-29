@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <button type="button" onclick="btnAction();" id="btn">Start</button>
     <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
         <table class="table">
             <thead>
@@ -61,6 +62,23 @@
         </table>
     </div>
     <script>
+        let btn = document.getElementById('btn');
+        let action = [0];
+
+        function btnAction() {
+            if (action[0] == 0) {
+                action = [];
+                action.push(1);
+                setInterval(timer, 1000);
+                console.log(action);
+            } else {
+                action = [];
+                action.push(0);
+                console.log(action);
+            }
+        }
+
+
         let localSecond = JSON.parse(localStorage.getItem('second'));
         let localMinute = JSON.parse(localStorage.getItem('minute'));
         let localHours = JSON.parse(localStorage.getItem('hours'));
@@ -68,6 +86,7 @@
         let second = localSecond ? [localSecond] : [0];
         let minute = localMinute ? [localMinute] : [0];
         let hours = localHours ? [localHours] : [0];
+
 
         async function timer() {
 
@@ -157,9 +176,7 @@
         }
         */
 
-
-        setInterval(timer, 1000);
-
+        //window.addEventListener('load', timer)
         // setInterval(countdown,1000);
     </script>
 
