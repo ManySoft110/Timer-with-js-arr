@@ -8,14 +8,12 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Timer</title>
 </head>
 
 <body>
-
-    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
-        <table class="table">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem; ">
+        <table class="table ">
             <thead>
                 <tr>
                     <th>Hours</th>
@@ -25,22 +23,26 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="hours"></td>
-                    <td id="minute"></td>
-                    <td id="second" scope="row"></td>
+                    <td id="hours">0</td>
+                    <td id="minute">0</td>
+                    <td id="second" scope="row ">0</td>
                 </tr>
                 <tr>
-                    <td scope="row"></td>
+                    <td scope="row "></td>
                     <td></td>
                     <td></td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <div>
+        <button type="button" class="btn btn-success" onclick="btnAction();" id="btn">Start</button>
+        <button type="button" name="" id="" onclick="resetTimer();" class="btn btn-primary">Reset</button>
+    </div>
     <hr>
     <p>Countdown</p>
-    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
-        <table class="table">
+    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem; ">
+        <table class="table ">
             <thead>
                 <tr>
                     <th>Hours</th>
@@ -52,10 +54,10 @@
                 <tr>
                     <td id="chours"></td>
                     <td id="cminute"></td>
-                    <td id="csecond" scope="row"></td>
+                    <td id="csecond" scope=" row "></td>
                 </tr>
                 <tr>
-                    <td scope="row"></td>
+                    <td scope="row "></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -63,6 +65,28 @@
         </table>
     </div>
     <script>
+        let btn = document.getElementById('btn');
+        let action = [0];
+
+        function btnAction() {
+            if (action[0] == 0) {
+                action = [];
+                action.push(1);
+                t = setInterval(timer, 1000);
+                console.log(action);
+
+                btn.textContent = 'Pause';
+                btn.className = 'btn btn-danger'
+            } else {
+                action = [];
+                action.push(0);
+                console.log(action);
+                clearInterval(t);
+                btn.textContent = 'Start';
+                btn.className = 'btn btn-success'
+            }
+        }
+
         let localSecond = JSON.parse(localStorage.getItem('second'));
         let localMinute = JSON.parse(localStorage.getItem('minute'));
         let localHours = JSON.parse(localStorage.getItem('hours'));
@@ -70,6 +94,7 @@
         let second = localSecond ? [localSecond] : [0];
         let minute = localMinute ? [localMinute] : [0];
         let hours = localHours ? [localHours] : [0];
+
 
         async function timer() {
 
@@ -89,7 +114,7 @@
                 minute.push(newMinute);
                 localStorage.setItem('minute', minute);
             }
-            if (minute[0] > 2) {
+            if (minute[0] > 59) {
                 minute = [0];
 
                 let oldHours = hours[0];
@@ -97,7 +122,7 @@
                 hours = [];
                 hours.push(newHours);
             }
-            if (hours[0] > 3) {
+            if (hours[0] > 23) {
                 hours = [0];
             }
             document.getElementById("second").innerHTML = second;
@@ -105,6 +130,14 @@
             document.getElementById("hours").innerHTML = hours;
         }
 
+        function resetTimer() {
+            localStorage.removeItem('second');
+            localStorage.removeItem('minute');
+            localStorage.removeItem('hours');
+            second = [0];
+            minute = [0];
+            hours = [0];
+        }
 
         let arr = new Map([
             ['Moustafa', 1500],
@@ -112,7 +145,7 @@
         ]);
 
         let newArr = '';
-        // for (const x of arr.values()) {
+        // for (const item of arr.values()) {
         for (const item of arr.keys()) {
             newArr += console.log(item);
         }
@@ -152,15 +185,13 @@
             if (chours[0] < 1) {
                 chours = [0];
             }
-            document.getElementById("csecond").innerHTML = csecond;
-            document.getElementById("cminute").innerHTML = cminute;
-            document.getElementById("chours").innerHTML =  chours;
+            document.getElementById("csecond ").innerHTML = csecond;
+            document.getElementById("cminute ").innerHTML = cminute;
+            document.getElementById("chours ").innerHTML =  chours;
         }
         */
 
-
-        setInterval(timer, 1000);
-
+        //window.addEventListener('load', timer)
         // setInterval(countdown,1000);
     </script>
 
@@ -171,9 +202,9 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js "></script>
 </body>
 
 </html>
