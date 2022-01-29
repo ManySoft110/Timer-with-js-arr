@@ -12,9 +12,6 @@
 </head>
 <body>
 
-
-
- 
 <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;"> 
     <table class="table">
         <thead>
@@ -63,93 +60,108 @@
         </tbody>
     </table>
 </div>
+<script>
 
+let localSecond = JSON.parse(localStorage.getItem('second'));
+let localMinute = JSON.parse(localStorage.getItem('minute'));
+let localHours = JSON.parse(localStorage.getItem('hours'));
+
+let second = localSecond ? [localSecond] : [0];
+let minute = localMinute ? [localMinute] : [0];
+let hours = localHours ? [localHours] : [0];
     
+async function timer() {
+   
+    let oldSecond = second[0]
+        
+    let newSecond = oldSecond + 1;
+    second = [];
+    second.push(newSecond);
+    localStorage.setItem('second',second);
     
-    <script>
-     
-    let second = [0];
-    let minute = [0];
-    let hours = [0];
+    if (second[0] > 59) {
+        second = [0];
     
-    function timer() {
-        let oldSecond = second[0];
-        let newSecond = oldSecond + 1;
-        second = [];
-        second.push(newSecond);
-    
-        if (second[0] > 59) {
-            second = [0];
-    
-            let oldMinute = minute[0];
-            let newMinute = oldMinute + 1;
-            minute = [];
-            minute.push(newMinute);
-        }
-    
-        if (minute[0] > 59) {
-            minute = [0];
-            
-            let oldHours = hours[0];
-            let newHours = oldHours + 1;
-            hours = [];
-            hours.push(newHours);
-        }
-    
-        if (hours[0] > 23) {
-            hours = [0];
-        }
-        document.getElementById("second").innerHTML = second;
-        document.getElementById("minute").innerHTML = minute;
-        document.getElementById("hours").innerHTML =  hours;
+        let oldMinute = minute[0];
+        let newMinute = oldMinute + 1;
+        minute = [];
+        minute.push(newMinute);
+        localStorage.setItem('minute',minute);
     }
+    if (minute[0] > 2) {
+        minute = [0];
+        
+        let oldHours = hours[0];
+        let newHours = oldHours + 1;
+        hours = [];
+        hours.push(newHours);
+    }
+    if (hours[0] > 3) {
+        hours = [0];
+    }
+    document.getElementById("second").innerHTML = second;
+    document.getElementById("minute").innerHTML = minute;
+    document.getElementById("hours").innerHTML =  hours;
+}
+
+
+let arr = new Map([
+    ['Moustafa',1500],
+    ['Moustafa1',2500]
+]);
+
+let newArr = '';
+// for (const x of arr.values()) {
+for (const item of arr.keys()) {
+    newArr += console.log(item) ;
+}
+
+
 
 
 
 /*
-    // countdown
-    let csecond = [5];
-    let cminute = [5];
-    let chours = [1];
+let csecond = [5];
+let cminute = [5];
+let chours = [1];
     
-    function countdown() {
-        let coldSecond = csecond[0];
-        let cnewSecond = coldSecond - 1;
-        csecond = [];
-        csecond.push(cnewSecond);
+function countdown() {
+    let coldSecond = csecond[0];
+    let cnewSecond = coldSecond - 1;
+    csecond = [];
+    csecond.push(cnewSecond);
+   
+    if (csecond[0] == 0) {
+        csecond = [5];
     
-        if (csecond[0] == 0) {
-            csecond = [5];
-    
-            let coldMinute = cminute[0];
-            let cnewMinute = coldMinute - 1;
-            cminute = [];
-            cminute.push(cnewMinute);
-        }
-    
-        if (cminute[0] == 0) {
-            cminute = [2];
-            
-            let coldHours = chours[0];
-            let cnewHours = coldHours - 1;
-            chours = [];
-            chours.push(cnewHours);
-        }
-    
-        if (chours[0] < 1) {
-            chours = [0];
-        }
-        document.getElementById("csecond").innerHTML = csecond;
-        document.getElementById("cminute").innerHTML = cminute;
-        document.getElementById("chours").innerHTML =  chours;
+        let coldMinute = cminute[0];
+        let cnewMinute = coldMinute - 1;
+        cminute = [];
+        cminute.push(cnewMinute);
     }
+    if (cminute[0] == 0) {
+        cminute = [2];
+           
+        let coldHours = chours[0];
+        let cnewHours = coldHours - 1;
+        chours = [];
+        chours.push(cnewHours);
+    }
+    
+    if (chours[0] < 1) {
+        chours = [0];
+    }
+    document.getElementById("csecond").innerHTML = csecond;
+    document.getElementById("cminute").innerHTML = cminute;
+    document.getElementById("chours").innerHTML =  chours;
+}
 */
 
 
-    setInterval(timer,1000);
+setInterval(timer,1000);
 
-   // setInterval(countdown,1000);
-    </script>
+// setInterval(countdown,1000);
+</script>
     
      
 
