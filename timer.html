@@ -1,177 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>Timer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Timer</title>
 </head>
+
 <body>
+    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hours</th>
+                    <th>Minute</th>
+                    <th>Second</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="hours"></td>
+                    <td id="minute"></td>
+                    <td id="second" scope="row"></td>
+                </tr>
+                <tr>
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <p>Countdown</p>
+    <div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hours</th>
+                    <th>Minute</th>
+                    <th>Second</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="chours"></td>
+                    <td id="cminute"></td>
+                    <td id="csecond" scope="row"></td>
+                </tr>
+                <tr>
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let localSecond = JSON.parse(localStorage.getItem('second'));
+        let localMinute = JSON.parse(localStorage.getItem('minute'));
+        let localHours = JSON.parse(localStorage.getItem('hours'));
 
-<div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;"> 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Hours</th>
-                <th>Minute</th>
-                <th>Second</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td id="hours"></td>
-                <td id="minute"></td>
-                <td id="second" scope="row"></td>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<hr>
-<p>Countdown</p>
-<div style="width: 70%; margin-left: auto;margin-right: auto;margin-top: 7rem;"> 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Hours</th>
-                <th>Minute</th>
-                <th>Second</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td id="chours"></td>
-                <td id="cminute"></td>
-                <td id="csecond" scope="row"></td>
-            </tr>
-            <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<script>
+        let second = localSecond ? [localSecond] : [0];
+        let minute = localMinute ? [localMinute] : [0];
+        let hours = localHours ? [localHours] : [0];
 
-let localSecond = JSON.parse(localStorage.getItem('second'));
-let localMinute = JSON.parse(localStorage.getItem('minute'));
-let localHours = JSON.parse(localStorage.getItem('hours'));
+        async function timer() {
 
-let second = localSecond ? [localSecond] : [0];
-let minute = localMinute ? [localMinute] : [0];
-let hours = localHours ? [localHours] : [0];
-    
-async function timer() {
-   
-    let oldSecond = second[0]
-        
-    let newSecond = oldSecond + 1;
-    second = [];
-    second.push(newSecond);
-    localStorage.setItem('second',second);
-    
-    if (second[0] > 59) {
-        second = [0];
-    
-        let oldMinute = minute[0];
-        let newMinute = oldMinute + 1;
-        minute = [];
-        minute.push(newMinute);
-        localStorage.setItem('minute',minute);
-    }
-    if (minute[0] > 2) {
-        minute = [0];
-        
-        let oldHours = hours[0];
-        let newHours = oldHours + 1;
-        hours = [];
-        hours.push(newHours);
-    }
-    if (hours[0] > 3) {
-        hours = [0];
-    }
-    document.getElementById("second").innerHTML = second;
-    document.getElementById("minute").innerHTML = minute;
-    document.getElementById("hours").innerHTML =  hours;
-}
+            let oldSecond = second[0]
+
+            let newSecond = oldSecond + 1;
+            second = [];
+            second.push(newSecond);
+            localStorage.setItem('second', second);
+
+            if (second[0] > 59) {
+                second = [0];
+
+                let oldMinute = minute[0];
+                let newMinute = oldMinute + 1;
+                minute = [];
+                minute.push(newMinute);
+                localStorage.setItem('minute', minute);
+            }
+            if (minute[0] > 2) {
+                minute = [0];
+
+                let oldHours = hours[0];
+                let newHours = oldHours + 1;
+                hours = [];
+                hours.push(newHours);
+            }
+            if (hours[0] > 3) {
+                hours = [0];
+            }
+            document.getElementById("second").innerHTML = second;
+            document.getElementById("minute").innerHTML = minute;
+            document.getElementById("hours").innerHTML = hours;
+        }
 
 
-let arr = new Map([
-    ['Moustafa',1500],
-    ['Moustafa1',2500]
-]);
 
-let newArr = '';
-// for (const x of arr.values()) {
-for (const item of arr.keys()) {
-    newArr += console.log(item) ;
-}
+        let arr = new Map([
+            ['Moustafa', 1500],
+            ['Moustafa1', 2500]
+        ]);
 
+        let newArr = '';
+        // for (const item of arr.values()) {
+        for (const item of arr.keys()) {
+            newArr += console.log(item);
+        }
 
 
 
 
-/*
-let csecond = [5];
-let cminute = [5];
-let chours = [1];
-    
-function countdown() {
-    let coldSecond = csecond[0];
-    let cnewSecond = coldSecond - 1;
-    csecond = [];
-    csecond.push(cnewSecond);
-   
-    if (csecond[0] == 0) {
-        csecond = [5];
-    
-        let coldMinute = cminute[0];
-        let cnewMinute = coldMinute - 1;
-        cminute = [];
-        cminute.push(cnewMinute);
-    }
-    if (cminute[0] == 0) {
-        cminute = [2];
+
+        /*
+        let csecond = [5];
+        let cminute = [5];
+        let chours = [1];
+            
+        function countdown() {
+            let coldSecond = csecond[0];
+            let cnewSecond = coldSecond - 1;
+            csecond = [];
+            csecond.push(cnewSecond);
            
-        let coldHours = chours[0];
-        let cnewHours = coldHours - 1;
-        chours = [];
-        chours.push(cnewHours);
-    }
-    
-    if (chours[0] < 1) {
-        chours = [0];
-    }
-    document.getElementById("csecond").innerHTML = csecond;
-    document.getElementById("cminute").innerHTML = cminute;
-    document.getElementById("chours").innerHTML =  chours;
-}
-*/
+            if (csecond[0] == 0) {
+                csecond = [5];
+            
+                let coldMinute = cminute[0];
+                let cnewMinute = coldMinute - 1;
+                cminute = [];
+                cminute.push(cnewMinute);
+            }
+            if (cminute[0] == 0) {
+                cminute = [2];
+                   
+                let coldHours = chours[0];
+                let cnewHours = coldHours - 1;
+                chours = [];
+                chours.push(cnewHours);
+            }
+            
+            if (chours[0] < 1) {
+                chours = [0];
+            }
+            document.getElementById("csecond").innerHTML = csecond;
+            document.getElementById("cminute").innerHTML = cminute;
+            document.getElementById("chours").innerHTML =  chours;
+        }
+        */
 
 
-setInterval(timer,1000);
+        setInterval(timer, 1000);
 
-// setInterval(countdown,1000);
-</script>
-    
-     
+        // setInterval(countdown,1000);
+    </script>
 
 
 
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </body>
+
 </html>
