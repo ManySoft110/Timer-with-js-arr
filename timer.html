@@ -69,15 +69,18 @@
             if (action[0] == 0) {
                 action = [];
                 action.push(1);
-                setInterval(timer, 1000);
+                t = setInterval(timer, 1000);
                 console.log(action);
+
+                btn.textContent = 'Stop';
             } else {
                 action = [];
                 action.push(0);
                 console.log(action);
+                clearInterval(t);
+                btn.textContent = 'Start';
             }
         }
-
 
         let localSecond = JSON.parse(localStorage.getItem('second'));
         let localMinute = JSON.parse(localStorage.getItem('minute'));
