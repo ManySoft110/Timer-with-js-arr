@@ -23,9 +23,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="hours "></td>
-                    <td id="minute "></td>
-                    <td id="second " scope="row "></td>
+                    <td id="hours">0</td>
+                    <td id="minute">0</td>
+                    <td id="second" scope="row ">0</td>
                 </tr>
                 <tr>
                     <td scope="row "></td>
@@ -37,7 +37,7 @@
     </div>
     <div>
         <button type="button" class="btn btn-success" onclick="btnAction();" id="btn">Start</button>
-        <button type="button" name="" id="" class="btn btn-primary">Reset</button>
+        <button type="button" name="" id="" onclick="resetTimer();" class="btn btn-primary">Reset</button>
     </div>
     <hr>
     <p>Countdown</p>
@@ -52,9 +52,9 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="chours "></td>
-                    <td id="cminute "></td>
-                    <td id="csecond " scope="row "></td>
+                    <td id="chours"></td>
+                    <td id="cminute"></td>
+                    <td id="csecond" scope=" row "></td>
                 </tr>
                 <tr>
                     <td scope="row "></td>
@@ -125,12 +125,19 @@
             if (hours[0] > 23) {
                 hours = [0];
             }
-            document.getElementById("second ").innerHTML = second;
-            document.getElementById("minute ").innerHTML = minute;
-            document.getElementById("hours ").innerHTML = hours;
+            document.getElementById("second").innerHTML = second;
+            document.getElementById("minute").innerHTML = minute;
+            document.getElementById("hours").innerHTML = hours;
         }
 
-
+        function resetTimer() {
+            localStorage.removeItem('second');
+            localStorage.removeItem('minute');
+            localStorage.removeItem('hours');
+            second = [0];
+            minute = [0];
+            hours = [0];
+        }
 
         let arr = new Map([
             ['Moustafa', 1500],
