@@ -87,7 +87,7 @@
                 minute.push(newMinute);
                 localStorage.setItem('minute', minute);
             }
-            if (minute[0] > 2) {
+            if (minute[0] > 59) {
                 minute = [0];
 
                 let oldHours = hours[0];
@@ -95,7 +95,7 @@
                 hours = [];
                 hours.push(newHours);
             }
-            if (hours[0] > 3) {
+            if (hours[0] > 23) {
                 hours = [0];
             }
             document.getElementById("second").innerHTML = second;
