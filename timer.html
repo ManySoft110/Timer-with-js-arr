@@ -160,15 +160,43 @@
             hours = [0];
         }
 
+
         let arr = new Map([
-            ['Moustafa', 1500],
-            ['Moustafa1', 2500]
+            ['Moustafa', 1],
+            ['Moustafa1', 2]
+            
         ]);
 
 
-        let newArr = '';
+        let opj = [
+            {
+                name:{
+                    'fname':'Moustafa',
+                    'lname': 'Elsaied',
+                },
+                details:{
+                    'age':'3333',
+                    'type': 'male',
+                }
+            }
+        ];
+        
+        localStorage.setItem('eeeee', JSON.stringify(opj));
+        let newArr0 = [];
+        
+       /* for (const item1 of opj) {
+            newArr0 += console.log(item1);
+        }*/
+
+        //let rrr = localStorage.getItem('eeeee');
+        let rrr = JSON.parse(localStorage.getItem('eeeee'));
+
+        console.log(rrr);
+
+        let newArr = [];
         // for (const item of arr.values()) {
-        for (const item of arr.keys()) {
+        //for (const item of arr.keys()) {
+        for (const item of arr) {
             newArr += console.log(item);
         }
 
