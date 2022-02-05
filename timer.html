@@ -24,12 +24,12 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="hours">0</td>
-                    <td id="minute">0</td>
-                    <td id="second" scope="row ">0</td>
+                    <td id="hours"></td>
+                    <td id="minute"></td>
+                    <td id="second" scope="row"></td>
                 </tr>
                 <tr>
-                    <td scope="row "></td>
+                    <td scope="row"></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -43,7 +43,7 @@
     <hr>
     <p>Countdown</p>
     <div class="table">
-        <table class="table ">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Hours</th>
@@ -70,36 +70,21 @@
         </div>
     </div>
     <script>
-        let btn = document.getElementById('btn');
-        let action = [0];
-
-        function btnAction() {
-            if (action[0] == 0) {
-                action = [];
-                action.push(1);
-                t = setInterval(timer, 1000);
-                console.log(action);
-
-                btn.textContent = 'Pause';
-                btn.className = 'btn btn-danger'
-            } else {
-                action = [];
-                action.push(0);
-                console.log(action);
-                clearInterval(t);
-                btn.textContent = 'Start';
-                btn.className = 'btn btn-success'
-            }
-        }
+        let secondTr = document.getElementById("second");
+        let minuteTr = document.getElementById("minute");
+        let hoursTr =  document.getElementById("hours");
 
         let localSecond = JSON.parse(localStorage.getItem('second'));
         let localMinute = JSON.parse(localStorage.getItem('minute'));
-        let localHours = JSON.parse(localStorage.getItem('hours'));
+        let localHours  = JSON.parse(localStorage.getItem('hours'));
 
         let second = localSecond ? [localSecond] : [0];
         let minute = localMinute ? [localMinute] : [0];
         let hours = localHours ? [localHours] : [0];
 
+        secondTr.innerHTML = second;
+        minuteTr.innerHTML = minute;
+        hoursTr.innerHTML  = hours;
 
         async function timer() {
 
@@ -130,11 +115,42 @@
             if (hours[0] > 23) {
                 hours = [0];
             }
-            document.getElementById("second").innerHTML = second;
-            document.getElementById("minute").innerHTML = minute;
-            document.getElementById("hours").innerHTML = hours;
+            secondTr.innerHTML = second;
+            minuteTr.innerHTML = minute;
+            hoursTr.innerHTML  = hours;
         }
 
+
+        let btn = document.getElementById('btn');
+        let action = [0];
+        if(!localSecond)
+            btn.textContent = 'Start';
+        else
+            btn.textContent = 'Resume';
+
+        function btnAction() {
+            if (action[0] == 0) {
+                action = [];
+                action.push(1);
+                t = setInterval(timer, 1000);
+                console.log(action);
+
+                btn.textContent = 'Pause';
+                btn.className = 'btn btn-danger'
+            } else {
+                action = [];
+                action.push(0);
+                console.log(action);
+                clearInterval(t);
+                if(!localSecond)
+                    btn.textContent = 'Start';
+                else
+                    btn.textContent = 'Resume';
+                btn.className = 'btn btn-success'
+            }
+        }
+
+        
         function resetTimer() {
             localStorage.removeItem('second');
             localStorage.removeItem('minute');
@@ -148,6 +164,7 @@
             ['Moustafa', 1500],
             ['Moustafa1', 2500]
         ]);
+
 
         let newArr = '';
         // for (const item of arr.values()) {
