@@ -120,7 +120,6 @@
             hoursTr.innerHTML  = hours;
         }
 
-
         let btn = document.getElementById('btn');
         let action = [0];
         if(!localSecond)
@@ -150,7 +149,6 @@
             }
         }
 
-        
         function resetTimer() {
             localStorage.removeItem('second');
             localStorage.removeItem('minute');
@@ -160,31 +158,35 @@
             hours = [0];
         }
 
-
         let arr = new Map([
             ['Moustafa', 1],
             ['Moustafa1', 2]
             
         ]);
 
-
         let opj = [
             {
-                name:{
-                    'fname':'Moustafa',
-                    'lname': 'Elsaied',
-                },
-                details:{
-                    'age':'3333',
-                    'type': 'male',
+                user:{
+                    name:{
+                        'fname':'Moustafa',
+                        'lname': 'Elsaied',
+                        'age':'3333',
+                        'type': 'male',
+                    },
+                    name:{
+                        'fname':'Moustafa',
+                        'lname': 'Elsaied',
+                        'age':'3333',
+                        'type': 'male',
+                    }
                 }
             }
         ];
         
         localStorage.setItem('eeeee', JSON.stringify(opj));
+
         let newArr0 = [];
-        
-       /* for (const item1 of opj) {
+        /*for (const item1 of opj) {
             newArr0 += console.log(item1);
         }*/
 
@@ -195,7 +197,7 @@
 
         let newArr = [];
         // for (const item of arr.values()) {
-        //for (const item of arr.keys()) {
+        // for (const item of arr.keys()) {
         for (const item of arr) {
             newArr += console.log(item);
         }
