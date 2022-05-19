@@ -164,41 +164,44 @@
             
         ]);
 
-        let opj = [
+        let obj = [
             {
                 user:{
                     name:{
                         'fname':'Moustafa',
                         'lname': 'Elsaied',
-                        'age':'3333',
+                        'age':'1111',
                         'type': 'male',
-                    },
+                    }
+                },
+                user1:{
                     name:{
-                        'fname':'Moustafa',
+                        'fname':'Moustafa1',
                         'lname': 'Elsaied',
-                        'age':'3333',
+                        'age':'2222',
                         'type': 'male',
                     }
                 }
             }
         ];
-        
-        localStorage.setItem('eeeee', JSON.stringify(opj));
+        localStorage.setItem('users', JSON.stringify(obj));
 
+        
         let newArr0 = [];
-        /*for (const item1 of opj) {
+        /*for (const item1 of obj) {
             newArr0 += console.log(item1);
         }*/
 
         //let rrr = localStorage.getItem('eeeee');
-        let rrr = JSON.parse(localStorage.getItem('eeeee'));
+        let rrr = JSON.parse(localStorage.getItem('users'));
 
-        console.log(rrr);
+       // console.log(rrr);
 
         let newArr = [];
         // for (const item of arr.values()) {
         // for (const item of arr.keys()) {
-        for (const item of arr) {
+     
+        for (const item of obj) {
             newArr += console.log(item);
         }
 
